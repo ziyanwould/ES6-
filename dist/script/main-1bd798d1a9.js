@@ -387,7 +387,7 @@
 // console.log(ziyanwould.toString());//转化为字符串
 
 
-// let  ziyanwould = Symbol();
+// let  ziyanwould = Symbol();//Symbol 只能用方括号
 // let obj={
 //     [ziyanwould]:'紫烟'
 // }
@@ -396,13 +396,144 @@
 // console.log(obj[ziyanwould]);
 
 
-var obj = {
-    name: 'ziyanwould',
-    skill: 'web'
+// let obj = {
+//     name:'ziyanwould',
+//     skill:'web'
+// }
+// let age=Symbol();
+// obj[age]=18;
+// console.log(obj);
+// for(let item in obj){
+//     console.log(obj[item])
+// }
+
+
+// //set  （可以去重）//数据结构
+
+// let setArr = new Set(['ziyanwould','紫烟','would']);
+// console.log(setArr);
+
+// //set 增删查
+// setArr.add('紫烟');//不允许重复
+// console.log(setArr);
+
+// //has 查找
+// console.log(setArr.has('would'))
+
+// //全部删除clear
+// // setArr.clear();
+
+// //删除某一个方法
+// //setArr.delete('would')
+// console.log(setArr);
+
+// //for ...of
+// for(let item of setArr){
+//      console.log(item) ;
+// }
+// //forEach
+// setArr.forEach((value)=>console.log(value));
+
+// //size 方法
+// console.log('size',setArr.size)
+
+
+// //weakset
+
+// let weakObj = new WeakSet();
+// let obj={a:'ziyanwould',b:'强大的紫烟'};
+// weakObj.add(obj);
+// console.log(weakObj)
+
+
+// //map的数据结构 赋值 
+
+// let json={
+//     name:'ziyanwould',
+//     skill:'eat'
+// }
+// console.log(json.name)
+// //=>
+// var map = new Map();
+// map.set(json,'photoshop');
+// console.log(map);
+
+// //灵活性对转，高效
+// map.set('ziyanwould',json);
+// console.log(map);
+
+
+// //map增删查
+
+// //get 
+// console.log(map.get('ziyanwould'));
+
+// //delete
+// // map.delete(json)
+// // console.log(map)
+
+// //clear
+// //map.clear()
+
+// //查看里面的个数
+// console.log(map.size)
+
+// //has 查找 返回true false
+// console.log(map.has('ziyanwould'));
+
+
+// //set设置 get获取 has查找判断 delete删除某一个 clear删除全部 size里面的个数
+
+
+//proxy 代理 ES6 增强 对象和函数(方法) 生命周期(勾函数) 预处理
+// let obj ={
+//     add:function(val){
+//         return val +100;
+//     },
+//     name:'i am godisljr'
+// }
+// // console.log(obj.add(100),obj.name)
+
+// let pro = new Proxy({
+//   //第一个放对象体
+//     add:function(val){
+//         return val +100;
+//     },
+//     name:'i am godisljr'
+
+// },{
+//  //第二个放预处理机制 get :在开始得到某一项东西之前、
+
+//    get:function(target,key,property){//死记硬背这三个参数
+//     console.log('come in get');
+//     console.log('<br/>',target)
+//     return target[key];//要返回对应的属性和属性值（初步理解）
+
+//    },
+//    set:function(target,key,value,receiver){
+//     console.log(` setting ${key} = ${value}`)//有坑，此时变化不代表最后的变化  
+//     return target[key]=value+'6555';//预处理后要把结果返回才行 不然值不会有变化。
+//    }
+
+// })
+
+// console.log(pro.name)//显示结果 预处理机制
+
+// pro.name='我'
+
+// console.log(pro.name)//显示结果 预处理机制
+
+
+//apply方法的预处理
+var target = function target() {
+    return 'this is my godisljr';
 };
-var age = Symbol();
-obj[age] = 18;
-console.log(obj);
-for (var item in obj) {
-    console.log(obj[item]);
-}
+var handler = {
+    apply: function apply(target, ctx, args) {
+        console.log('do apply'); //需要return
+        return Reflect.apply.apply(Reflect, arguments); //暂时史记硬背
+    }
+};
+var pro = new Proxy(target, handler);
+
+console.log(pro());
