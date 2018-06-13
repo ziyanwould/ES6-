@@ -1,5 +1,13 @@
 'use strict';
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 // let a =1;
 // console.log(a);
 
@@ -525,15 +533,136 @@
 
 
 //apply方法的预处理
-var target = function target() {
-    return 'this is my godisljr';
-};
-var handler = {
-    apply: function apply(target, ctx, args) {
-        console.log('do apply'); //需要return
-        return Reflect.apply.apply(Reflect, arguments); //暂时史记硬背
-    }
-};
-var pro = new Proxy(target, handler);
+// let target = function(){
+//      return 'this is my godisljr';
+// }
+// let handler={
+//     apply(target,ctx,args){
+//         console.log('do apply')//需要return
+//         return Reflect.apply(...arguments)//暂时史记硬背
+//     }
+// }
+// let pro = new Proxy(target,handler);
 
-console.log(pro());
+// console.log(pro())
+
+
+//promise 承诺的意思  解决回调地狱*****
+//1.洗菜做饭 2.坐下来吃饭 3.收拾桌子洗碗
+// let state=1;
+
+// function step1(resolve,reject){
+//     console.log('1.开始-洗菜做饭');
+//     if(state==1){
+//         resolve('洗菜做饭-完成')
+//     }else{
+//         reject('洗菜做饭错误')
+//     }
+// }
+
+// function step2(resolve,reject){
+
+//     setTimeout(function(){
+//         console.log('2.开始-坐下来吃饭');
+//         if(state==1){
+//             resolve('坐下来吃饭-完成')
+//         }else{
+//             reject('坐下来吃饭-错误')
+//         }
+
+//     },1500)
+
+// }
+
+// function step3(resolve,reject){
+//     console.log('3.开始-收拾桌子洗碗');
+//     if(state==1){
+//         resolve('收拾桌子洗碗-完成')
+//     }else{
+//         reject('收拾桌子洗碗-错误')
+//     }
+// }
+
+// new Promise(step1)
+// .then(function(val){
+//    console.log(val);
+//    return new Promise(step2)
+// })
+// .then(function(val){
+// console.log(val);
+//    return new Promise(step3)
+// })
+// .then(function(){
+//   console.log('搞定！')
+// })
+
+
+//class 类的用法（拥有继承特性es6）
+//类里面跟着方法和函数
+
+var Coder = function () {
+   _createClass(Coder, [{
+      key: 'name',
+      value: function name(val) {
+         //val 是方法的，是这个函数的参数，不是这个类的参数
+         console.log(val);
+
+         //不用return 值都没传到外面去
+         return val;
+      }
+      //在类中多个方法和函数的间隔不需要逗号和冒号
+
+   }, {
+      key: 'skill',
+      value: function skill(val) {
+         console.log(this.name('ziyanwould') + ':' + val);
+      }
+
+      //类的参数及传参
+
+   }]);
+
+   function Coder(a, b) {
+      _classCallCheck(this, Coder);
+
+      //代表是类的参数而不是函数和方法的参数
+      this.a = a;
+      this.b = b;
+   }
+
+   _createClass(Coder, [{
+      key: 'add',
+      value: function add() {
+         return this.a + this.b;
+      }
+   }]);
+
+   return Coder;
+}();
+
+//实用类
+
+//let ziyanwould =new  Coder;
+// ziyanwould.name("紫嫣")
+// ziyanwould.skill('我负责美');
+
+var ziyanwould = new Coder(1, 9);
+console.log(ziyanwould.add());
+
+//声明新的类
+
+var htmler = function (_Coder) {
+   _inherits(htmler, _Coder);
+
+   function htmler() {
+      _classCallCheck(this, htmler);
+
+      return _possibleConstructorReturn(this, (htmler.__proto__ || Object.getPrototypeOf(htmler)).apply(this, arguments));
+   }
+
+   return htmler;
+}(Coder);
+
+var godisljr = new htmler();
+
+godisljr.name('无敌紫嫣');

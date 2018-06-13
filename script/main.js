@@ -531,15 +531,109 @@
 
 
 //apply方法的预处理
-let target = function(){
-     return 'this is my godisljr';
-}
-let handler={
-    apply(target,ctx,args){
-        console.log('do apply')//需要return
-        return Reflect.apply(...arguments)//暂时史记硬背
-    }
-}
-let pro = new Proxy(target,handler);
+// let target = function(){
+//      return 'this is my godisljr';
+// }
+// let handler={
+//     apply(target,ctx,args){
+//         console.log('do apply')//需要return
+//         return Reflect.apply(...arguments)//暂时史记硬背
+//     }
+// }
+// let pro = new Proxy(target,handler);
 
-console.log(pro())
+// console.log(pro())
+
+
+//promise 承诺的意思  解决回调地狱*****
+//1.洗菜做饭 2.坐下来吃饭 3.收拾桌子洗碗
+// let state=1;
+
+// function step1(resolve,reject){
+//     console.log('1.开始-洗菜做饭');
+//     if(state==1){
+//         resolve('洗菜做饭-完成')
+//     }else{
+//         reject('洗菜做饭错误')
+//     }
+// }
+
+// function step2(resolve,reject){
+
+//     setTimeout(function(){
+//         console.log('2.开始-坐下来吃饭');
+//         if(state==1){
+//             resolve('坐下来吃饭-完成')
+//         }else{
+//             reject('坐下来吃饭-错误')
+//         }
+
+//     },1500)
+    
+// }
+
+// function step3(resolve,reject){
+//     console.log('3.开始-收拾桌子洗碗');
+//     if(state==1){
+//         resolve('收拾桌子洗碗-完成')
+//     }else{
+//         reject('收拾桌子洗碗-错误')
+//     }
+// }
+
+// new Promise(step1)
+// .then(function(val){
+//    console.log(val);
+//    return new Promise(step2)
+// })
+// .then(function(val){
+// console.log(val);
+//    return new Promise(step3)
+// })
+// .then(function(){
+//   console.log('搞定！')
+// })
+
+
+//class 类的用法（拥有继承特性es6）
+//类里面跟着方法和函数
+
+class Coder {
+     name(val){//val 是方法的，是这个函数的参数，不是这个类的参数
+        console.log(val)
+
+        //不用return 值都没传到外面去
+        return val;
+     }
+     //在类中多个方法和函数的间隔不需要逗号和冒号
+     skill(val){
+         console.log(this.name('ziyanwould')+':'+val)
+     }
+
+     //类的参数及传参
+     constructor(a,b){//代表是类的参数而不是函数和方法的参数
+        this.a =a;
+        this.b=b;
+     }
+
+     add(){
+         return this.a + this.b;
+     }
+}
+
+//实用类
+
+//let ziyanwould =new  Coder;
+// ziyanwould.name("紫嫣")
+// ziyanwould.skill('我负责美');
+
+let ziyanwould = new Coder(1,9)
+console.log(ziyanwould.add()) 
+
+
+//声明新的类
+
+class htmler extends Coder{}
+let godisljr  = new htmler;
+
+godisljr.name('无敌紫嫣')
