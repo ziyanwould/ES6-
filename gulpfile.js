@@ -22,7 +22,20 @@ var minifyCss = require('gulp-minify-css');//压缩css
 // 
 // ==========================================================================================================
 
-
+/**gulp.task() 用来创建一个函数
+ * 引入插件 var name = require('插件文件夹名字')
+ * 
+ * 1.src是用来查找想要处理的文件
+ * 2.pipe理解为管道
+ * 3.pipe(gulp.dest())处理好的文件放到指定的地方
+ * 4.  /** /*
+ * 5.  '!json/secret-*.json' 表示不包含json目录下的以这个开头的的json文件
+ * 6.  gulp.task('name',['task1','task2','task3'],function(){
+ * }) 这表示多任务执行 运行name 会运行task1、2、3，后再继续执行name本身的命令
+ * 7. 创建一个命令任务gulp.watch('监视文件'，['执行任务'])
+ * 
+ * 
+ */
 gulp.task('default',function() {
     browserSync.init({
             server: {

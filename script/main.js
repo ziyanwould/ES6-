@@ -598,42 +598,55 @@
 //class 类的用法（拥有继承特性es6）
 //类里面跟着方法和函数
 
-class Coder {
-     name(val){//val 是方法的，是这个函数的参数，不是这个类的参数
-        console.log(val)
+// class Coder {
+//      name(val){//val 是方法的，是这个函数的参数，不是这个类的参数
+//         console.log(val)
 
-        //不用return 值都没传到外面去
-        return val;
-     }
-     //在类中多个方法和函数的间隔不需要逗号和冒号
-     skill(val){
-         console.log(this.name('ziyanwould')+':'+val)
-     }
+//         //不用return 值都没传到外面去
+//         return val;
+//      }
+//      //在类中多个方法和函数的间隔不需要逗号和冒号
+//      skill(val){
+//          console.log(this.name('ziyanwould')+':'+val)
+//      }
 
-     //类的参数及传参
-     constructor(a,b){//代表是类的参数而不是函数和方法的参数
-        this.a =a;
-        this.b=b;
-     }
+//      //类的参数及传参
+//      constructor(a,b){//代表是类的参数而不是函数和方法的参数
+//         this.a =a;
+//         this.b=b;
+//      }
 
-     add(){
-         return this.a + this.b;
-     }
-}
+//      add(){
+//          return this.a + this.b;
+//      }
+// }
 
-//实用类
+// //实用类
 
-//let ziyanwould =new  Coder;
-// ziyanwould.name("紫嫣")
-// ziyanwould.skill('我负责美');
+// //let ziyanwould =new  Coder;
+// // ziyanwould.name("紫嫣")
+// // ziyanwould.skill('我负责美');
 
-let ziyanwould = new Coder(1,9)
-console.log(ziyanwould.add()) 
+// let ziyanwould = new Coder(1,9)
+// console.log(ziyanwould.add()) 
 
 
-//声明新的类
+// //声明新的类
 
-class htmler extends Coder{}
-let godisljr  = new htmler;
+// class htmler extends Coder{}
+// let godisljr  = new htmler;
 
-godisljr.name('无敌紫嫣')
+// godisljr.name('无敌紫嫣')
+
+
+//es6 模块化操作 
+
+//export 输出
+//import 引入
+
+
+// import {name} from './temp';
+// console.log(name);
+
+//组件是default  可以自己自定义命名
+//import sky from './temp';

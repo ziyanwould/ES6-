@@ -1,14 +1,8 @@
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _temp72ce3a42f = require('./temp-72ce3a42f2.js');
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-// let a =1;
+console.log(_temp72ce3a42f.name); // let a =1;
 // console.log(a);
 
 // {
@@ -600,69 +594,48 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 //class 类的用法（拥有继承特性es6）
 //类里面跟着方法和函数
 
-var Coder = function () {
-   _createClass(Coder, [{
-      key: 'name',
-      value: function name(val) {
-         //val 是方法的，是这个函数的参数，不是这个类的参数
-         console.log(val);
+// class Coder {
+//      name(val){//val 是方法的，是这个函数的参数，不是这个类的参数
+//         console.log(val)
 
-         //不用return 值都没传到外面去
-         return val;
-      }
-      //在类中多个方法和函数的间隔不需要逗号和冒号
+//         //不用return 值都没传到外面去
+//         return val;
+//      }
+//      //在类中多个方法和函数的间隔不需要逗号和冒号
+//      skill(val){
+//          console.log(this.name('ziyanwould')+':'+val)
+//      }
 
-   }, {
-      key: 'skill',
-      value: function skill(val) {
-         console.log(this.name('ziyanwould') + ':' + val);
-      }
+//      //类的参数及传参
+//      constructor(a,b){//代表是类的参数而不是函数和方法的参数
+//         this.a =a;
+//         this.b=b;
+//      }
 
-      //类的参数及传参
+//      add(){
+//          return this.a + this.b;
+//      }
+// }
 
-   }]);
+// //实用类
 
-   function Coder(a, b) {
-      _classCallCheck(this, Coder);
+// //let ziyanwould =new  Coder;
+// // ziyanwould.name("紫嫣")
+// // ziyanwould.skill('我负责美');
 
-      //代表是类的参数而不是函数和方法的参数
-      this.a = a;
-      this.b = b;
-   }
+// let ziyanwould = new Coder(1,9)
+// console.log(ziyanwould.add()) 
 
-   _createClass(Coder, [{
-      key: 'add',
-      value: function add() {
-         return this.a + this.b;
-      }
-   }]);
 
-   return Coder;
-}();
+// //声明新的类
 
-//实用类
+// class htmler extends Coder{}
+// let godisljr  = new htmler;
 
-//let ziyanwould =new  Coder;
-// ziyanwould.name("紫嫣")
-// ziyanwould.skill('我负责美');
+// godisljr.name('无敌紫嫣')
 
-var ziyanwould = new Coder(1, 9);
-console.log(ziyanwould.add());
 
-//声明新的类
+//es6 模块化操作 
 
-var htmler = function (_Coder) {
-   _inherits(htmler, _Coder);
-
-   function htmler() {
-      _classCallCheck(this, htmler);
-
-      return _possibleConstructorReturn(this, (htmler.__proto__ || Object.getPrototypeOf(htmler)).apply(this, arguments));
-   }
-
-   return htmler;
-}(Coder);
-
-var godisljr = new htmler();
-
-godisljr.name('无敌紫嫣');
+//export 输出
+//import 引入
